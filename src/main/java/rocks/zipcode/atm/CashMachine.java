@@ -1,5 +1,6 @@
 package rocks.zipcode.atm;
 
+import javafx.scene.control.Alert;
 import rocks.zipcode.atm.bank.AccountData;
 import rocks.zipcode.atm.bank.Bank;
 
@@ -65,11 +66,14 @@ public class CashMachine {
                 T data = result.getData();
                 postAction.accept(data);
             } else {
+               // Alert overdrawnMessage = result.getOverdrawnMessage();
                 String errorMessage = result.getErrorMessage();
                 throw new RuntimeException(errorMessage);
+
             }
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+
         }
     }
 }

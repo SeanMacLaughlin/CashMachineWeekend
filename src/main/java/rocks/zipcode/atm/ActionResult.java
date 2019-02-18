@@ -1,10 +1,14 @@
 package rocks.zipcode.atm;
 
+import javafx.scene.control.Alert;
+
+import javax.swing.*;
+
 /**
  * @author ZipCodeWilmington
  */
 public class ActionResult<T> {
-
+    //private Alert overdrawnMessage;
     private T data;
     private String errorMessage;
 
@@ -16,6 +20,11 @@ public class ActionResult<T> {
         this.errorMessage = errorMessage;
     }
 
+    //private ActionResult(Alert overdrawnMessage) {this.overdrawnMessage = overdrawnMessage;}
+
+
+
+
     public T getData() {
         return data;
     }
@@ -23,6 +32,12 @@ public class ActionResult<T> {
     public String getErrorMessage() {
         return errorMessage;
     }
+
+   /* public Alert getOverdrawnMessage() {
+        return overdrawnMessage;
+    } */
+
+
 
     public boolean isSuccess() {
         return data != null;
@@ -35,4 +50,8 @@ public class ActionResult<T> {
     public static <E> ActionResult<E> fail(String errorMessage) {
         return new ActionResult<E>(errorMessage);
     }
+
+    /*public static <E> ActionResult<E> overdrawn(Alert overdrawnMessage) {
+        return new ActionResult<E>(overdrawnMessage);
+    } */
 }

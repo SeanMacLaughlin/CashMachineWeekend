@@ -1,5 +1,9 @@
 package rocks.zipcode.atm;
 
+import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
+import javafx.scene.layout.TilePane;
 import rocks.zipcode.atm.bank.Bank;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -11,19 +15,25 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.layout.FlowPane;
 
+import java.awt.*;
+
 /**
  * @author ZipCodeWilmington
  */
 public class CashMachineApp extends Application {
 
     private TextField field = new TextField();
+    private TextField depositField = new TextField();
+    private TextField withdrawlField = new TextField();
     private CashMachine cashMachine = new CashMachine(new Bank());
 
     private Parent createContent() {
-        VBox vbox = new VBox(10);
+        VBox vbox = new VBox(30);
         vbox.setPrefSize(600, 600);
 
         TextArea areaInfo = new TextArea();
+        TextArea moreInfo = new TextArea();
+
 
         Button btnSubmit = new Button("Set Account ID");
         btnSubmit.setOnAction(e -> {
@@ -63,6 +73,8 @@ public class CashMachineApp extends Application {
         flowpane.getChildren().add(btnWithdraw);
         flowpane.getChildren().add(btnExit);
         vbox.getChildren().addAll(field, flowpane, areaInfo);
+        flowpane.setHgap(30);
+        flowpane.setMargin(btnSubmit, new Insets(20, 20, 20, 50));
         return vbox;
     }
 
